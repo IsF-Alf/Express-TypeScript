@@ -8,3 +8,7 @@ export interface DiaryEntry {
   visibility: Visibility
   comment: string
 }
+
+// export type NonSensitiveDiaryEntry = Pick<DiaryEntry, 'id' | 'date' | 'weather' | 'visibility'>
+
+export type NonSensitiveDiaryEntry = Omit<DiaryEntry, 'comment'>
