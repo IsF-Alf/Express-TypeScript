@@ -7,6 +7,15 @@ router.get('/', (_req, res) => {
   res.send(diaryService.getEntriesWithoutSensitiveInfo())
 })
 
+router.get('/:id', (req, res) => {
+  const diary = diaryService.findById(+req.params.id)
+  if (diary !== null && diary !== undefined) {
+    res.send(diary)
+  } else {
+    res.status(404).send('Diary not found')
+  }
+})
+
 router.post('/', (_req, res) => {
 //   const { date, weather, visibility } = req.body;
 //  console.log(date, weather, visibility);
